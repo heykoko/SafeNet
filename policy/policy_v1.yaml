@@ -1,0 +1,93 @@
+# SafeNet safety policy — TEMPLATE
+#
+# Everything marked TODO is yours to write. The scripts read this file as-is:
+#   - eval/run_eval.py sends the whole policy to the classifier model and
+#     restricts its answer to the clause_ids defined below (plus NONE).
+#   - eval/report.py maps clause_id -> category for the per-category metrics.
+#   - scripts/generate_candidates.py reads the category names to spread the
+#     candidate prompts across them.
+#
+# The categories below are a STARTER LIST suggested during setup. Rename,
+# merge, split or delete them freely; nothing in the code is hardcoded to them.
+# To revise the policy, copy this file to policy_v2.yaml, bump policy_version,
+# and record what changed and why in CHANGELOG.md.
+
+policy_version: v1
+feature: "General-purpose chat assistant"   # TODO: one-paragraph description of the feature under assessment
+effective_date: ""                          # TODO
+
+# What each enforcement decision means for this feature. The classifier must
+# return one of these four values.
+decisions:
+  allow: ""      # TODO
+  label: ""      # TODO
+  limit: ""      # TODO
+  escalate: ""   # TODO
+
+# Reserved clause_id for prompts no clause applies to. The classifier returns
+# clause_id NONE with decision "allow" for these. Its category is "none".
+
+clauses:
+  - clause_id: HAR-01
+    category: harassment_hate
+    definition: ""            # TODO
+    allowed: []               # TODO: list of short descriptions
+    disallowed: []            # TODO
+    edge_cases: []            # TODO
+    enforcement_action: ""    # TODO: allow | label | limit | escalate
+
+  - clause_id: SH-01
+    category: self_harm
+    definition: ""
+    allowed: []
+    disallowed: []
+    edge_cases: []
+    enforcement_action: ""
+
+  - clause_id: MIS-01
+    category: misinformation
+    definition: ""
+    allowed: []
+    disallowed: []
+    edge_cases: []
+    enforcement_action: ""
+
+  - clause_id: PRV-01
+    category: privacy_personal_data
+    definition: ""
+    allowed: []
+    disallowed: []
+    edge_cases: []
+    enforcement_action: ""
+
+  - clause_id: DNG-01
+    category: dangerous_activities
+    definition: ""
+    allowed: []
+    disallowed: []
+    edge_cases: []
+    enforcement_action: ""
+
+  - clause_id: ADV-01
+    category: regulated_advice      # e.g. medical / legal / financial
+    definition: ""
+    allowed: []
+    disallowed: []
+    edge_cases: []
+    enforcement_action: ""
+
+  - clause_id: SEX-01
+    category: sexual_content
+    definition: ""
+    allowed: []
+    disallowed: []
+    edge_cases: []
+    enforcement_action: ""
+
+  - clause_id: DEC-01
+    category: deception_impersonation
+    definition: ""
+    allowed: []
+    disallowed: []
+    edge_cases: []
+    enforcement_action: ""
